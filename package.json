@@ -1,5 +1,5 @@
 {
-  "name": "@seanhouli/react-mapbox-search",
+  "name": "@nulfrost/react-mapbox-search",
   "version": "1.0.5",
   "description": "A location picker component that uses Mapbox's places API to provide location suggestions",
   "main": "dist/index",
@@ -9,8 +9,8 @@
     "test": "NODE_ENV=test jest test",
     "prepublish": "npm run build"
   },
-  "repository": "https://github.com/seanhouli/react-mapbox-search",
-  "author": "Sean Houilhan",
+  "repository": "https://github.com/nulfrost/react-mapbox-search",
+  "author": "Dane Miller",
   "license": "MIT",
   "keywords": [
     "react",
@@ -41,10 +41,10 @@
   "dependencies": {
     "@babel/runtime": "^7.4.5",
     "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-icons": "^2.2.5",
-    "styled-components": "^2.1.0"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-icons": "^4.2.0",
+    "styled-components": "^5.2.1"
   },
   "files": [
     "dist"

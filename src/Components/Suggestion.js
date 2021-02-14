@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 
   &:hover {
     color: white;
-    background-color: ${props => props.selectColor};
+    background-color: ${(props) => props.selectColor};
   }
 `;
 
@@ -20,17 +20,16 @@ const Suggestion = ({
   idx,
   selectColor,
   mouseInSuggestions,
-  isTouch
 }) => {
   return (
     <Wrapper
       selectColor={selectColor}
       style={
-        cursorIdx === idx && !mouseInSuggestions && !isTouch
+        cursorIdx === idx && !mouseInSuggestions
           ? { color: "white", background: selectColor }
           : null
       }
-      onMouseDown={event => clickHandler({ location: place, event })}
+      onMouseDown={(event) => clickHandler({ location: place, event })}
     >
       {place.place_name}
     </Wrapper>

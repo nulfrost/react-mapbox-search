@@ -6,7 +6,7 @@ A location picker powered by mapbox, implemented in React.
 
 ## Quick Start
 
-`npm i @seanhouli/react-mapbox-search`
+`npm i @nulfrost/react-mapbox-search`
 
 ## Features
 

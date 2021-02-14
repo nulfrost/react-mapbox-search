@@ -18,8 +18,6 @@ const SearchBoxWrapper = styled.div`
   }
 `;
 
-const isTouch = "ontouchstart" in window || navigator.msMaxTouchPoints > 0;
-
 class SearchBox extends React.Component {
   constructor(props) {
     super(props);
@@ -28,11 +26,11 @@ class SearchBox extends React.Component {
       queryResults: [],
       cursorIdx: 0,
       getMouseInSuggestions: false,
-      inputFocused: false
+      inputFocused: false,
     };
   }
 
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     this.setState({ query: event.target.value }, () => {
       this.sendQuery();
     });
@@ -58,14 +56,14 @@ class SearchBox extends React.Component {
     this.setState({
       query: location.place_name,
       cursorIdx: 0,
-      getMouseInSuggestions: false
+      getMouseInSuggestions: false,
     });
     if (this.props.callback) {
       this.props.callback({ location, event });
     }
   };
 
-  handleArrowKeys = event => {
+  handleArrowKeys = (event) => {
     if (this.state.getMouseInSuggestions) {
       return;
     }
@@ -81,14 +79,18 @@ class SearchBox extends React.Component {
         // up arrow pressed
         event.preventDefault();
         if (this.showResults() && cursorIdx > 0)
-          this.setState(prevState => ({ cursorIdx: prevState.cursorIdx - 1 }));
+          this.setState((prevState) => ({
+            cursorIdx: prevState.cursorIdx - 1,
+          }));
         break;
       }
       case 40: {
         // down arrow pressed
         event.preventDefault();
         if (this.showResults() && cursorIdx < queryResults.length - 1)
-          this.setState(prevState => ({ cursorIdx: prevState.cursorIdx + 1 }));
+          this.setState((prevState) => ({
+            cursorIdx: prevState.cursorIdx + 1,
+          }));
         break;
       }
 
@@ -98,7 +100,7 @@ class SearchBox extends React.Component {
         if (this.showResults()) {
           document.activeElement.blur();
           this.handleClick({
-            location: queryResults[cursorIdx]
+            location: queryResults[cursorIdx],
           });
         }
         break;
@@ -106,10 +108,10 @@ class SearchBox extends React.Component {
     }
   };
 
-  getMouseInSuggestions = bool => {
+  getMouseInSuggestions = (bool) => {
     const { cursorIdx } = this.state;
 
-    this.setState(prevState => {
+    this.setState((prevState) => {
       if (prevState !== bool) {
         this.setState({ getMouseInSuggestions: bool });
       }
@@ -133,13 +135,13 @@ class SearchBox extends React.Component {
       queryResults,
       query,
       cursorIdx,
-      getMouseInSuggestions
+      getMouseInSuggestions,
     } = this.state;
     return (
       <SearchBoxWrapper
-        onMouseLeave={!isTouch && this.handleMouseLeave}
-        onKeyDown={!isTouch && this.handleArrowKeys}
-        onMouseEnter={!isTouch && this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+        onKeyDown={this.handleArrowKeys}
+        onMouseEnter={this.handleMouseEnter}
       >
         <SearchInput
           hasResults={this.showResults()}
@@ -154,7 +156,6 @@ class SearchBox extends React.Component {
           selectColor={this.props.selectColor}
           hasResults={this.showResults()}
           clickHandler={this.handleClick}
-          isTouch={isTouch}
           cursorIdx={cursorIdx}
           mouseInSuggestions={getMouseInSuggestions}
           getMouseInSuggestions={this.getMouseInSuggestions}
@@ -193,7 +194,7 @@ SearchBox.propTypes = {
   /**
    *  default query text
    */
-  query: PropTypes.string
+  query: PropTypes.string,
 };
 
 SearchBox.defaultProps = {
@@ -201,7 +202,7 @@ SearchBox.defaultProps = {
   selectColor: "#58a",
   callback: undefined,
   searchHint: "Search",
-  query: ""
+  query: "",
 };
 
 export default SearchBox;

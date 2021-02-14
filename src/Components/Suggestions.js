@@ -26,7 +26,6 @@ const Suggestions = ({
   mouseInSuggestions,
   getMouseInSuggestions,
   selectColor,
-  isTouch
 }) => {
   const handleMouseEnter = () => {
     getMouseInSuggestions(true);
@@ -39,15 +38,14 @@ const Suggestions = ({
   return (
     <Wrapper hasResults={hasResults}>
       <SuggestionsList
-        onMouseEnter={!isTouch && handleMouseEnter}
-        onMouseLeave={!isTouch && handleMouseLeave}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         {places.map((place, idx) => (
           <Suggestion
             selectColor={selectColor}
             mouseInSuggestions={mouseInSuggestions}
             idx={idx}
-            isTouch={isTouch}
             cursorIdx={cursorIdx}
             clickHandler={clickHandler}
             key={place.id}
