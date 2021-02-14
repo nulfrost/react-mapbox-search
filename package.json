@@ -1,6 +1,6 @@
 {
   "name": "@nulfrost/react-mapbox-search",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "A location picker component that uses Mapbox's places API to provide location suggestions",
   "main": "dist/index",
   "scripts": {
@@ -9,7 +9,10 @@
     "test": "NODE_ENV=test jest test",
     "prepublish": "npm run build"
   },
-  "repository": "https://github.com/nulfrost/react-mapbox-search",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nulfrost/react-mapbox-search.git"
+  },
   "author": "Dane Miller",
   "license": "MIT",
   "keywords": [
@@ -48,5 +51,12 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/nulfrost/react-mapbox-search/issues"
+  },
+  "homepage": "https://github.com/nulfrost/react-mapbox-search#readme",
+  "directories": {
+    "test": "test"
+  }
 }

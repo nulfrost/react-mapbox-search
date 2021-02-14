@@ -26,6 +26,7 @@ const Suggestions = ({
   mouseInSuggestions,
   getMouseInSuggestions,
   selectColor,
+  isTouch,
 }) => {
   const handleMouseEnter = () => {
     getMouseInSuggestions(true);
@@ -46,6 +47,7 @@ const Suggestions = ({
             selectColor={selectColor}
             mouseInSuggestions={mouseInSuggestions}
             idx={idx}
+            isTouch={isTouch}
             cursorIdx={cursorIdx}
             clickHandler={clickHandler}
             key={place.id}

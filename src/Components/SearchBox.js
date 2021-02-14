@@ -18,6 +18,12 @@ const SearchBoxWrapper = styled.div`
   }
 `;
 
+let isTouch;
+
+if (typeof window !== "undefined") {
+  isTouch = "ontouchstart" in window || navigator.msMaxTouchPoints > 0;
+}
+
 class SearchBox extends React.Component {
   constructor(props) {
     super(props);
@@ -139,9 +145,9 @@ class SearchBox extends React.Component {
     } = this.state;
     return (
       <SearchBoxWrapper
-        onMouseLeave={this.handleMouseLeave}
-        onKeyDown={this.handleArrowKeys}
-        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={!isTouch && this.handleMouseLeave}
+        onKeyDown={!isTouch && this.handleArrowKeys}
+        onMouseEnter={!isTouch && this.handleMouseEnter}
       >
         <SearchInput
           hasResults={this.showResults()}
@@ -156,6 +162,7 @@ class SearchBox extends React.Component {
           selectColor={this.props.selectColor}
           hasResults={this.showResults()}
           clickHandler={this.handleClick}
+          isTouch={isTouch}
           cursorIdx={cursorIdx}
           mouseInSuggestions={getMouseInSuggestions}
           getMouseInSuggestions={this.getMouseInSuggestions}
